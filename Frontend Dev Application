@@ -1,0 +1,47 @@
+//efficient version
+var index;
+var numbers = new Array(100);
+for(index = 0; index < 100; index++){
+    numbers[index] = index+1;
+    if(numbers[index] % 3 === 0 && numbers[index] % 5 === 0) console.log('FooBar');
+    else if(numbers[index] % 5 === 0) console.log('Bar');
+    else if(numbers[index] % 3 === 0) console.log('Foo');
+    else console.log(numbers[index]);
+}
+
+//"worst-but working"
+var index; 
+var multiple3;
+var multiple5;
+var isMultiple3;
+var isMultiple5;
+var numbers = new Array(100);
+for(index = 0; index < 100; index++){
+    numbers[index] = index+1;
+    for(multiple3 = 3; multiple3 <= 99; multiple3 += 3){
+        if(numbers[index] == multiple3){
+            isMultiple3 = true;
+            break;
+        }
+        else isMultiple3 = false;
+    }
+    for(multiple5 = 5; multiple5 <= 100; multiple5 += 5){
+        if(numbers[index] == multiple5){
+            isMultiple5 = true;
+            break;
+        } 
+        else isMultiple5 = false;
+    }
+    if(isMultiple3 === true && isMultiple5 === true){
+        console.log("FooBar");
+    }
+    else if(isMultiple3 === true && isMultiple5 === false){
+        console.log("Foo");
+    } 
+    else if(isMultiple3 === false && isMultiple5 === true){
+        console.log("Bar");
+    } 
+    else{
+        console.log(numbers[index]);
+    }
+}
